@@ -1,0 +1,41 @@
+{
+  "name": "poc-plugin-v2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-react": "^7.8.3",
+    "@emotion/react": "^11.9.0",
+    "babel-loader": "^8.0.6",
+    "concurrently": "^7.1.0",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.6.0",
+    "react-scripts": "5.0.1",
+    "serve": "^13.0.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

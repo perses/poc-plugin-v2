@@ -29,10 +29,13 @@ dev-fe: build-fe
 build-plugins:
 	cd plugins/timeseries-panel && npm install && npm run build
 	cd plugins/gauge-panel && npm install && npm run build
+	cd plugins/gantt-panel && npm install && npm run build
 
 .PHONY: install-plugins
 install-plugins: build-plugins # to make the plugin be served by the backend
-	mkdir -p backend/plugins/timeseries-panel
-	cp -r plugins/timeseries-panel/dist/* backend/plugins/timeseries-panel
-	mkdir -p backend/plugins/gauge-panel
-	cp -r plugins/gauge-panel/dist/* backend/plugins/gauge-panel
+	mkdir -p backend/plugins/perses_plugins_timeseries_panel
+	cp -r plugins/timeseries-panel/dist/* backend/plugins/perses_plugins_timeseries_panel
+	mkdir -p backend/plugins/perses_plugins_gauge_panel
+	cp -r plugins/gauge-panel/dist/* backend/plugins/perses_plugins_gauge_panel
+	mkdir -p backend/plugins/perses_plugins_gantt_panel
+	cp -r plugins/gantt-panel/dist/* backend/plugins/perses_plugins_gantt_panel

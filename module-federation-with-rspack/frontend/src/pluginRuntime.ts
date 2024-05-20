@@ -1,22 +1,11 @@
 import { init, loadRemote } from "@module-federation/enhanced/runtime";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { PersesPluginModule } from "./PersesPlugin.types";
 
-init({
+export const initialPluginRuntime = init({
   name: "@perses/perses-ui-host",
-  remotes: [
-    {
-      name: "perses_plugins_timeseries_panel",
-      entry: "http://localhost:8080/plugins/timeseries-panel/mf-manifest.json",
-      alias: "perses_plugins_timeseries_panel",
-    },
-    {
-      name: "perses_plugins_gauge_panel",
-      entry: "http://localhost:8080/plugins/gauge-panel/mf-manifest.json",
-      alias: "perses_plugins_gauge_panel",
-    },
-  ],
+  remotes: [], // all remotes are loaded dynamically
   shared: {
     react: {
       version: "18.0.0",
@@ -39,6 +28,38 @@ init({
   },
 });
 
-export async function loadPlugin(name: string) {
-  return loadRemote<PersesPluginModule>(`${name}/PanelDisplay`);
+export const PluginRuntimeContext = React.createContext(initialPluginRuntime);
+
+export function usePluginRuntime() {
+  const pluginRuntime = useContext(PluginRuntimeContext);
+
+  if (!pluginRuntime) {
+    throw new Error(
+      "usePluginRuntime must be used within a PluginRuntimeContext.Provider"
+    );
+  }
+
+  const checkRemote = (name: string) => {
+    const remote = pluginRuntime.moduleCache.has(name);
+    if (!remote) {
+      pluginRuntime.registerRemotes([
+        {
+          name,
+          entry: `http://localhost:8080/plugins/${name}/mf-manifest.json`,
+          alias: name,
+        },
+      ]);
+    }
+  };
+
+  const loadPanel = async (name: string) => {
+    checkRemote(name);
+
+    return loadRemote<PersesPluginModule>(`${name}/PanelDisplay`);
+  };
+
+  return {
+    pluginRuntime,
+    loadPanel,
+  };
 }

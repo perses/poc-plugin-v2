@@ -11,7 +11,7 @@ export default defineConfig({
   },
   output: {
     // TODO: make this a relative path with the proper host
-    assetPrefix: "http://localhost:8080/plugins/gauge-panel/",
+    assetPrefix: "http://localhost:8080/plugins/perses_plugins_gauge_panel/",
   },
   plugins: [pluginReact()],
   tools: {

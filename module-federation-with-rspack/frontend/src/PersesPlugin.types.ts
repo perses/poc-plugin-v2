@@ -5,3 +5,5 @@ export interface PersesPlugin {
 export interface PersesPluginModule {
   default: any;
 }
+
+export type PersesPluginType = "panel";

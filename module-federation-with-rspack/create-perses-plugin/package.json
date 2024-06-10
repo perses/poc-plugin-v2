@@ -1,0 +1,30 @@
+{
+  "name": "create-perses-plugin",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "node build.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "bin": {
+    "create-vite": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perses/perses.git",
+    "directory": "ui/packages/create-perses-ui"
+  },
+  "bugs": {
+    "url": "https://github.com/perses/perses/issues"
+  },
+  "homepage": "https://github.com/perses/perses/tree/main/ui/packages/create-perses-plugin#readme",
+  "type": "module",
+  "devDependencies": {
+    "@types/minimist": "^1.2.5",
+    "@types/prompts": "^2.4.9",
+    "esbuild": "0.20.2",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2"
+  }
+}

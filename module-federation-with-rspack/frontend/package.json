@@ -1,0 +1,23 @@
+{
+  "name": "poc-plugin-v2",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "rsbuild dev --open",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview"
+  },
+  "dependencies": {
+    "@module-federation/enhanced": "^0.1.11",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-error-boundary": "^4.0.13"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^0.6.8",
+    "@rsbuild/plugin-react": "^0.6.8",
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "typescript": "^5.4.2"
+  }
+}
